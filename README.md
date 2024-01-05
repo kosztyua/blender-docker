@@ -1,0 +1,1 @@
+Simple docker setup to run a headless blender with nvidia GPU support, accessible via SSH

@@ -1,0 +1,12 @@
+version: '3'
+services:
+  chia:
+    container_name: blender-docker
+    image: ghcr.io/kosztyua/blender-docker:latest
+    runtime: nvidia
+    restart: unless-stopped
+    ports:
+      - 22:22022
+    environment:
+      - TZ=Europe/Budapest
+      - GITHUB_USERS="kosztyua,andrejale"
