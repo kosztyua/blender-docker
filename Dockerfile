@@ -50,7 +50,7 @@ RUN \
   mkdir -p /home/${USERNAME}/blender/render_submit /home/${USERNAME}/blender/blender_scripts /home/${USERNAME}/blender/render_output &&\
   #
   echo "**** cleanup ****" && \
-  chown -R ${USERNAME}:${USERNAME} /home/${USERNAME}
+  chown -R ${USERNAME}:${USERNAME} /home/${USERNAME} && \
   rm -rf \
     /tmp/* \
     /var/lib/apt/lists/* \
