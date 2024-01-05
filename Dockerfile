@@ -7,6 +7,8 @@ ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
 
 COPY startup.sh /usr/local/bin/
+COPY cuda_enable.py /home/$USERNAME/blender/blender_scripts/
+
 RUN \
   echo "**** install packages ****" && \
   apt-get update && \
@@ -56,7 +58,6 @@ RUN \
     /var/lib/apt/lists/* \
     /var/tmp/*
 
-COPY cuda_enable.py /home/$USERNAME/blender_scripts/
 EXPOSE 22
 
 RUN 
