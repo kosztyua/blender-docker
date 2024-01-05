@@ -59,6 +59,4 @@ RUN \
     /var/tmp/*
 
 EXPOSE 22
-
-RUN 
 CMD [ "/usr/local/bin/startup.sh" ]
