@@ -3,7 +3,8 @@ ARG BLENDER_VERSION="4.0.2" # hardcoded if set, otherwise latest
 ARG USERNAME="blenderuser"
 ENV USERNAME=$USERNAME
 ARG BLENDER_DEPENDENCIES="libxrender1 libx11-6 libxxf86vm1 libxfixes3 libxi6 libxfixes3 libgl1 libxkbcommon0 libsm6 libxext6 libxrender-dev"
-
+ENV NVIDIA_VISIBLE_DEVICES all
+ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
 
 COPY startup.sh /usr/local/bin/
 RUN \
@@ -35,12 +36,6 @@ RUN \
     /blender/blender \
     /usr/bin/blender && \
   #
-  echo "**** cleanup ****" && \
-  rm -rf \
-    /tmp/* \
-    /var/lib/apt/lists/* \
-    /var/tmp/* && \
-  #
   echo "**** setup user ****" && \
   useradd -m -s /bin/bash ${USERNAME} && \
   mkdir -p /home/${USERNAME}/.ssh && \
@@ -52,7 +47,14 @@ RUN \
   service ssh start && \
   #
   echo "**** setup blender environment ****" && \
-  mkdir -p /home/${USERNAME}/render_submit/ /home/${USERNAME}/blender_scripts/ /home/${USERNAME}/blender/render_output/
+  mkdir -p /home/${USERNAME}/blender/render_submit /home/${USERNAME}/blender/blender_scripts /home/${USERNAME}/blender/render_output &&\
+  #
+  echo "**** cleanup ****" && \
+  chown -R ${USERNAME}:${USERNAME} /home/${USERNAME}
+  rm -rf \
+    /tmp/* \
+    /var/lib/apt/lists/* \
+    /var/tmp/*
 
 COPY cuda_enable.py /home/$USERNAME/blender_scripts/
 EXPOSE 22

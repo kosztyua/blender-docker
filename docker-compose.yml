@@ -6,7 +6,7 @@ services:
     runtime: nvidia
     restart: unless-stopped
     ports:
-      - 22:22022
+      - 22022:22
     environment:
       - TZ=Europe/Budapest
       - GITHUB_USERS="kosztyua,andrejale"
