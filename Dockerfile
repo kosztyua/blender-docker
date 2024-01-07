@@ -13,7 +13,7 @@ RUN \
   echo "**** install packages ****" && \
   apt-get update && \
   apt-get upgrade && \
-  apt-get install --no-install-recommends -y ca-certificates curl ocl-icd-libopencl1 tzdata xz-utils openssh-server ${BLENDER_DEPENDENCIES} && \
+  apt-get install --no-install-recommends -y ca-certificates curl ocl-icd-libopencl1 tzdata xz-utils openssh-server rsync ${BLENDER_DEPENDENCIES} && \
   ln -s libOpenCL.so.1 /usr/lib/x86_64-linux-gnu/libOpenCL.so && \
   mkdir -p /etc/OpenCL/vendors && \
   echo "libnvidia-opencl.so.1" > /etc/OpenCL/vendors/nvidia.icd && \
