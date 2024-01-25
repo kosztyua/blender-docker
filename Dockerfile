@@ -12,7 +12,7 @@ COPY cuda_enable.py /home/$USERNAME/blender/blender_scripts/
 RUN \
   echo "**** install packages ****" && \
   apt-get update && \
-  apt-get upgrade && \
+  apt-get upgrade -y && \
   apt-get install --no-install-recommends -y ca-certificates curl ocl-icd-libopencl1 tzdata xz-utils openssh-server rsync ${BLENDER_DEPENDENCIES} && \
   ln -s libOpenCL.so.1 /usr/lib/x86_64-linux-gnu/libOpenCL.so && \
   mkdir -p /etc/OpenCL/vendors && \
