@@ -6,8 +6,9 @@ name: Docker
 # documentation.
 
 on:
+  workflow_dispatch: # This allows for manual triggering of the workflow
   schedule:
-    - cron: '38 1 * * 0'
+    - cron: '38 1 * * 0' # This runs the workflow every Sunday at 01:38 AM UTC
   push:
     branches: [ "main" ]
     # Publish semver tags as releases.
