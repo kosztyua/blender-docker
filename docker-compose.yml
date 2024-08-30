@@ -9,7 +9,7 @@ services:
       - 22022:22
     environment:
       - TZ=Europe/Budapest
-      - GITHUB_USERS="kosztyua,andrejale"
+      - GITHUB_USERS=kosztyua,andrejale
     healthcheck:
       test: ["CMD", "nvidia-smi"]
       interval: 10m
