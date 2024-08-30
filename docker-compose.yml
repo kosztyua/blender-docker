@@ -1,12 +1,18 @@
 version: '3'
 services:
-  chia:
+  blender:
     container_name: blender-docker
     image: ghcr.io/kosztyua/blender-docker:latest
     runtime: nvidia
-    restart: unless-stopped
+    restart: always
     ports:
       - 22022:22
     environment:
       - TZ=Europe/Budapest
       - GITHUB_USERS="kosztyua,andrejale"
+    healthcheck:
+      test: ["CMD", "nvidia-smi"]
+      interval: 10m
+      timeout: 30s
+      retries: 1
+      start_period: 30s
